@@ -33,6 +33,11 @@ class FastImageViewModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void preload(final ReadableArray sources) {
         final Activity activity = getCurrentActivity();
+
+        if (activity == null) {
+	    return;
+	}
+
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
